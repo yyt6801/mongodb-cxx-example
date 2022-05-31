@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(MdwDir)third_party\mongo-c-driver\include\libbson-1.0;$(MdwDir)third_party\mongo-c-driver\include\libmongoc-1.0;$(MdwDir)third_party\mongo-cxx-driver\include\bsoncxx\v_noabi;$(MdwDir)third_party\mongo-cxx-driver\include\mongocxx\v_noabi;$(MdwDir)third_party\boost\boost_1_68_0;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MdwDir)third_party\mongo-cxx-driver\lib;$(MdwDir)third_party\mongo-c-driver\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>MONGOCXX_STATIC;BSONCXX_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>bsoncxx-static.lib;mongocxx-static.lib;bson-static-1.0.lib;mongoc-static-1.0.lib;Bcrypt.lib;Crypt32.lib;Advapi32.lib;Secur32.lib;Dnsapi.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
