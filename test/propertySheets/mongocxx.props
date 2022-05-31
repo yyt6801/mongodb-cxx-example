@@ -3,8 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(MdwDir)third_party\mongo-c-driver\include\libbson-1.0;$(MdwDir)third_party\mongo-c-driver\include\libmongoc-1.0;$(MdwDir)third_party\mongo-cxx-driver\include\bsoncxx\v_noabi;$(MdwDir)third_party\mongo-cxx-driver\include\mongocxx\v_noabi;$(MdwDir)third_party\boost\boost_1_68_0;$(IncludePath)</IncludePath>
-    <LibraryPath>$(MdwDir)third_party\mongo-cxx-driver\lib;$(MdwDir)third_party\mongo-c-driver\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\third_party\mongo-c-driver\include\libbson-1.0;..\third_party\mongo-c-driver\include\libmongoc-1.0;..\third_party\mongo-cxx-driver\include\bsoncxx\v_noabi;..\third_party\mongo-cxx-driver\include\mongocxx\v_noabi;$(MdwDir)\third_party\boost\boost_1_68_0;$(IncludePath)</IncludePath>
+    <LibraryPath>..\third_party\mongo-cxx-driver\lib;..\third_party\mongo-c-driver\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
