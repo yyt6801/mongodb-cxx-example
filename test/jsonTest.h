@@ -40,5 +40,6 @@ public:
 	static void fuzzyQuery();
 	static void uploadFile();
 	static void downloadFile();
-	
+	static void insertTest_json();
+
 };

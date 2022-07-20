@@ -2,6 +2,7 @@
 //
 
 #include "jsonTest.h"
+#include <nlohmann/json.hpp>
 
 
 using bsoncxx::builder::basic::kvp;
@@ -32,6 +33,14 @@ void  jsonTest::insertTest1() {
 	bsoncxx::document::view view = doc_value.view();
 	//插入数据至mongodb
 	optional<mongocxx::result::insert_one> result = mongodb.insert_one("DBname", "CollName", view);
+}
+
+void  jsonTest::insertTest_json() {
+	//使用json存入mongoDB,先将json序列化
+	nlohmann::json data = R"({"A" : "a", "B" : "b", "Pi" : 1234 })"_json;
+	std::string s = data.dump();
+	//插入数据至mongodb
+	optional<mongocxx::result::insert_one> result = mongodb.insert_one("DBname", "CollName", bsoncxx::from_json(s).view());
 }
 
 void  jsonTest::insertTest2() {
@@ -281,10 +290,10 @@ time_t standard_to_stamp(const char *str_time)
 
 int main()
 {
-	jsonTest::insertTest1();
-	jsonTest::insertTest2();
-	jsonTest::deleteOne();
-	jsonTest::updtaeOne();
+	//jsonTest::insertTest1();
+	//jsonTest::insertTest2();
+	//jsonTest::deleteOne();
+	//jsonTest::updtaeOne();
 	//jsonTest::updateAll();
 	//jsonTest::insertTest2();
 	//jsonTest::findAll();
@@ -295,8 +304,9 @@ int main()
 	//jsonTest::findDate();
 	//jsonTest::uploadFile();
 
+	jsonTest::insertTest_json();//使用json格式存入
 	printf("开始执行操作\n");
-	
+
 	//从数据库中查询结果第一条数据
 	optional<bsoncxx::document::value> result = mongodb.find_one("ustb", "curve_csm", make_document(kvp("mat_no", "X22B545118000")));
 	bsoncxx::document::value value = *result;
